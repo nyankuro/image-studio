@@ -39,4 +39,4 @@ Test PDF cần Ghostscript. Test giao diện dùng hồ sơ tạm (`IMAGE_STUDIO
 
 ## Phát hành
 
-Sửa `version` trong `package.json`, ghi `CHANGELOG.md`, push tag `vX.Y.Z`. GitHub Actions (`.github/workflows/release.yml`) chạy test rồi dựng bộ cài và bản portable, đính vào GitHub Release. App chưa ký số nên Windows SmartScreen có thể cảnh báo (README có giải thích).
+Sửa `version` trong `package.json`, ghi `CHANGELOG.md`, rồi push tag `vX.Y.Z` hoặc bấm **Run workflow** (workflow `release`, nhánh `main`) trong tab Actions; phiên Claude trên cloud không push được tag (proxy trả 403) nên dùng nút này. GitHub Actions (`.github/workflows/release.yml`) chạy test rồi dựng bộ cài và bản portable, đính vào GitHub Release. App chưa ký số nên Windows SmartScreen có thể cảnh báo (README có giải thích).
