@@ -6,6 +6,8 @@
 - Thư mục làm việc trên máy Aura: `H:\Image Editor\app`. Shortcut Desktop "Image Studio" trỏ tới `H:\Image Editor\app\release\win-unpacked\Image Studio.exe` (tạo bằng `npm run package`).
 - Đã kiểm tra trên máy Aura (Windows, ImageMagick đi kèm): `npm test` (42 test + hai test giao diện), bản đóng gói (`npm run package`) và bộ cài (`electron-builder --win nsis zip`).
 - Repository: https://github.com/nyankuro/image-studio (GPL-3.0-or-later).
+- Bản phát hành 1.0.0: https://github.com/nyankuro/image-studio/releases/tag/v1.0.0, dựng bằng **Run workflow** trong tab Actions. Bộ cài và bản portable tải về đã kiểm tra: SHA-256 khớp, Microsoft Defender sạch, VirusTotal 0/65, bản portable chạy và chuyển ảnh được.
+- Phiên Claude trên cloud không push được tag, không sửa được trang phát hành và phần About/topics của repo: soạn sẵn chữ rồi nhờ Aura dán.
 
 ## Việc có thể làm tiếp
 
