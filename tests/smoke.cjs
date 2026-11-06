@@ -51,6 +51,11 @@ async function main() {
       if (shell.openExternal !== openExternal || shell.openPath !== openPath) throw new Error('Could not stub shell');
     });
 
+    // ---- The app opens on the Converter, which comes first in the rail ----
+    await page.locator('[data-tool="converter"]').getByText('Drop images, PDFs or folders here').waitFor();
+    assert.equal(await page.locator('[data-tool="icon"]').isHidden(), true);
+    assert.deepEqual(await page.locator('.rail-tools .rail-button').allTextContents(), ['Converter', 'ICO Maker']);
+
     // ---- Rail: Ko-fi, About and update check ----
     await page.getByRole('button', { name: 'Support me' }).click();
     await waitForOpened(app, 'https://ko-fi.com/nyannyankuro');

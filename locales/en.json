@@ -12,7 +12,7 @@
   "common.openFolder": "Open folder",
 
   "about.title": "About",
-  "about.tagline": "Crisp Windows icons and batch image conversion.",
+  "about.tagline": "Batch image conversion and crisp Windows icons.",
   "about.version": "Version {version}",
   "about.checkUpdate": "Check for updates",
   "about.updateAvailable": "Version {version} is available.",

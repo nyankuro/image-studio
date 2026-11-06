@@ -8,18 +8,25 @@ import KofiIcon from './components/KofiIcon.jsx';
 import AboutPanel from './components/AboutPanel.jsx';
 import { LANGUAGES, useI18n } from './i18n.jsx';
 
+// Chuyển đổi là công cụ chính: đứng đầu thanh bên và mở mặc định.
 const TOOLS = [
-  { id: 'icon', label: 'tool.icon', icon: Shapes },
   { id: 'converter', label: 'tool.converter', icon: Repeat2 },
+  { id: 'icon', label: 'tool.icon', icon: Shapes },
 ];
+const DEFAULT_TOOL = TOOLS[0].id;
 const KOFI_URL = 'https://ko-fi.com/nyannyankuro';
+// Từ 1.0.1 app nhớ công cụ dưới khóa mới, nên ai đã dùng 1.0.0 cũng mở vào Chuyển đổi
+// một lần; khóa cũ được xóa.
+const TOOL_KEY = 'image-studio:active-tool';
+const OLD_TOOL_KEY = 'image-studio:tool';
 
 function readStoredTool() {
   try {
-    const value = window.localStorage.getItem('image-studio:tool');
-    return TOOLS.some((tool) => tool.id === value) ? value : 'icon';
+    window.localStorage.removeItem(OLD_TOOL_KEY);
+    const value = window.localStorage.getItem(TOOL_KEY);
+    return TOOLS.some((tool) => tool.id === value) ? value : DEFAULT_TOOL;
   } catch {
-    return 'icon';
+    return DEFAULT_TOOL;
   }
 }
 
@@ -40,7 +47,7 @@ export default function App() {
   function selectTool(id) {
     setActiveTool(id);
     try {
-      window.localStorage.setItem('image-studio:tool', id);
+      window.localStorage.setItem(TOOL_KEY, id);
     } catch {
       // Không lưu được lựa chọn thì vẫn chạy bình thường.
     }

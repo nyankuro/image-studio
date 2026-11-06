@@ -37,3 +37,24 @@ jobs:
         run: npx electron-builder --win nsis zip --x64 --publish always
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Release notes and SHA-256 checksums
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Lấy ghi chú trong docs/release-notes/v<version>.md, điền link bản dựng và mã SHA-256.
+          $version = (Get-Content package.json -Raw | ConvertFrom-Json).version
+          $tag = "v$version"
+          $notes = "docs/release-notes/$tag.md"
+          if (-not (Test-Path $notes)) { Write-Host "No $notes; the release text is left as it is."; exit 0 }
+          $files = Get-ChildItem release -File | Where-Object { $_.Extension -in '.exe', '.zip' } | Sort-Object Name -Descending
+          $sums = $files | ForEach-Object { '{0}  {1}' -f (Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLower(), $_.Name }
+          $setup = $files | Where-Object { $_.Extension -eq '.exe' } | Select-Object -First 1
+          $body = Get-Content $notes -Raw -Encoding UTF8
+          $body = $body.Replace('{{BUILD_URL}}', "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID")
+          $body = $body.Replace('{{SETUP_SHA256}}', (Get-FileHash $setup.FullName -Algorithm SHA256).Hash.ToLower())
+          $body = $body.Replace('{{SHA256}}', ($sums -join "`n"))
+          $file = Join-Path $env:RUNNER_TEMP 'release-notes.md'
+          [IO.File]::WriteAllText($file, $body, (New-Object System.Text.UTF8Encoding $false))
+          gh release edit $tag --title "Image Studio $version" --notes-file $file

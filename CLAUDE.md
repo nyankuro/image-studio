@@ -24,7 +24,7 @@ Test PDF cần Ghostscript. Test giao diện dùng hồ sơ tạm (`IMAGE_STUDIO
 - `electron/update-check.cjs`: hỏi GitHub Releases bản mới nhất; danh sách link được phép mở ra ngoài.
 - `electron/i18n.cjs` và `src/i18n.jsx`: cùng dùng `locales/en.json`, `locales/vi.json`. Giao diện báo ngôn ngữ cho main qua `app:set-language`.
 - `src/tools/icon/`: giao diện Tạo ICO; `src/lib/`: thu nhỏ ảnh, mặt nạ bo góc, mã hóa ICO/PNG, lượng tử màu (có test riêng, chạy được bằng Node).
-- `src/tools/converter/`: giao diện Chuyển đổi.
+- `src/tools/converter/`: giao diện Chuyển đổi, công cụ chính (đứng đầu thanh bên, mở mặc định; `src/App.jsx`).
 
 ## Quy ước cần giữ
 
@@ -39,4 +39,4 @@ Test PDF cần Ghostscript. Test giao diện dùng hồ sơ tạm (`IMAGE_STUDIO
 
 ## Phát hành
 
-Sửa `version` trong `package.json`, ghi `CHANGELOG.md`, rồi push tag `vX.Y.Z` hoặc bấm **Run workflow** (workflow `release`, nhánh `main`) trong tab Actions; phiên Claude trên cloud không push được tag (proxy trả 403) nên dùng nút này. GitHub Actions (`.github/workflows/release.yml`) chạy test rồi dựng bộ cài và bản portable, đính vào GitHub Release. App chưa ký số nên Windows SmartScreen có thể cảnh báo (README có giải thích).
+Sửa `version` trong `package.json`, ghi `CHANGELOG.md` và ghi chú phát hành `docs/release-notes/vX.Y.Z.md` (workflow tự điền `{{BUILD_URL}}`, `{{SHA256}}`, `{{SETUP_SHA256}}`), rồi push tag `vX.Y.Z` hoặc bấm **Run workflow** (workflow `release`, nhánh `main`) trong tab Actions; phiên Claude trên cloud không push được tag (proxy trả 403) nên dùng nút này. GitHub Actions (`.github/workflows/release.yml`) chạy test rồi dựng bộ cài và bản portable, đính vào GitHub Release. App chưa ký số nên Windows SmartScreen có thể cảnh báo (README có giải thích).

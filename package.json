@@ -1,8 +1,8 @@
 {
   "name": "image-studio",
   "productName": "Image Studio",
-  "version": "1.0.0",
-  "description": "Make crisp multi-size Windows icons (.ico) from any picture, and batch-convert images and PDFs between formats.",
+  "version": "1.0.1",
+  "description": "Batch-convert images and PDFs between formats, and make crisp multi-size Windows icons (.ico) from any picture.",
   "main": "electron/main.cjs",
   "private": true,
   "type": "module",
@@ -17,12 +17,16 @@
     "dist": "npm run fetch:magick && npm run build && electron-builder --win nsis zip --x64"
   },
   "keywords": [
-    "ico",
-    "icon",
-    "favicon",
     "image-converter",
+    "batch-convert",
+    "heic-to-jpg",
+    "webp",
+    "avif",
     "pdf-to-png",
     "imagemagick",
+    "ico",
+    "icon-maker",
+    "favicon",
     "electron",
     "windows"
   ],

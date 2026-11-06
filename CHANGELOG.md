@@ -9,6 +9,18 @@ Every app change gets a version note. Each release records:
 - Verification performed.
 - Package or shortcut changes, if any.
 
+## 1.0.1 - 2026-11-06
+
+### Changed
+
+- The **Converter** is now the main tool: it comes first in the sidebar and the app opens on it. The app still remembers the last tool you used (from this version on, so everyone starts on the Converter once).
+- README (English and Vietnamese), About text, app description and desktop shortcut describe the converter first, with a new question on converting iPhone (HEIC) photos to JPG.
+- Releases get their notes from `docs/release-notes/vX.Y.Z.md`; the release workflow fills in the build link and SHA-256 checksums.
+
+### Verification
+
+- `npm test` on Windows, including a new check that the app opens on the Converter and lists it first.
+
 ## 1.0.0 - 2026-11-06
 
 First public release.

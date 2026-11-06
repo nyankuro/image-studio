@@ -4,7 +4,7 @@
 
 # Image Studio
 
-**Biến bất kỳ bức ảnh nào thành icon Windows sắc nét đủ mọi kích thước, và chuyển đổi định dạng cả thư mục ảnh lẫn PDF trong một lần.**<br />
+**Chuyển đổi cả thư mục ảnh lẫn PDF sang JPG, PNG, WEBP, AVIF và hơn 100 định dạng khác trong một lần, và biến bất kỳ bức ảnh nào thành icon Windows sắc nét đủ mọi kích thước.**<br />
 Ứng dụng miễn phí, mã nguồn mở cho Windows. Chạy không cần mạng, ảnh của bạn không bao giờ rời khỏi máy.
 
 [English](../README.md) · **Tiếng Việt**
@@ -14,11 +14,19 @@
 [![Giấy phép: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-a948e8)](../LICENSE)
 [![Ủng hộ trên Ko-fi](https://img.shields.io/badge/Ko--fi-%E1%BB%A6ng%20h%E1%BB%99%20m%C3%ACnh-ff5e5b?logo=kofi&logoColor=white)](https://ko-fi.com/nyannyankuro)
 
-<img src="screenshots/ico-maker-vi.png" alt="Image Studio: Tạo ICO" width="900" />
+<img src="screenshots/converter-vi.png" alt="Image Studio: Chuyển đổi định dạng" width="900" />
 
 </div>
 
 ## ✨ Làm được gì
+
+**Chuyển đổi định dạng**
+
+- 📂 **Cả thư mục một lần.** Kéo-thả tệp hoặc thư mục (gồm cả thư mục con) rồi chuyển hết sang JPG, PNG, WEBP, AVIF, TIFF, GIF, ICO, PDF hoặc hơn 100 định dạng khác.
+- 📱 **Cả ảnh iPhone.** Đọc được HEIC/HEIF, WEBP, AVIF, ảnh RAW máy ảnh, PSD, SVG và nhiều loại khác, rồi đổi sang JPG hay PNG quen thuộc.
+- 📄 **PDF thành ảnh.** Mỗi trang thành một ảnh riêng, ở độ phân giải bạn chọn (72 đến 600 DPI).
+- 🛡️ **Tệp gốc luôn an toàn.** Mặc định kết quả được lưu vào thư mục con. Nếu chọn thay tệp gốc, mỗi tệp chỉ bị xóa sau khi bản mới đã ghi xong.
+- ⚡ **Nhanh.** Nhiều tệp được chuyển cùng lúc, tự điều chỉnh theo CPU và RAM, và bạn có thể dừng bất cứ lúc nào.
 
 **Tạo ICO**
 
@@ -27,17 +35,10 @@
 - ✂️ **Cắt khung theo ý bạn.** Kéo để dời ảnh, cuộn chuột để phóng to, bo góc từ vuông đến tròn hẳn. Thêm lề, màu nền hoặc viền nếu muốn.
 - 🧩 **Đủ kiểu ICO.** BMP 32-bit có nền trong suốt, PNG, BMP 24-bit, 8-bit (256 màu) và 4-bit (16 màu), có sẵn bộ size cho app Windows và favicon web, thêm size tùy ý đến 1024 px.
 
-**Chuyển đổi định dạng**
-
-- 📂 **Cả thư mục một lần.** Kéo-thả tệp hoặc thư mục (gồm cả thư mục con) rồi chuyển hết sang PNG, JPEG, WEBP, AVIF, TIFF, ICO, PDF hoặc hơn 100 định dạng khác.
-- 📄 **PDF thành ảnh.** Mỗi trang thành một ảnh riêng, ở độ phân giải bạn chọn (72 đến 600 DPI).
-- 🛡️ **Tệp gốc luôn an toàn.** Mặc định kết quả được lưu vào thư mục con. Nếu chọn thay tệp gốc, mỗi tệp chỉ bị xóa sau khi bản mới đã ghi xong.
-- ⚡ **Nhanh.** Nhiều tệp được chuyển cùng lúc, tự điều chỉnh theo CPU và RAM, và bạn có thể dừng bất cứ lúc nào.
-
 Ngoài ra: giao diện tiếng Việt và tiếng Anh, nền tối dịu mắt, vừa cả khi cửa sổ nhỏ, không quảng cáo, không cần tài khoản, không theo dõi.
 
 <div align="center">
-<img src="screenshots/converter-vi.png" alt="Image Studio: Chuyển đổi định dạng" width="900" />
+<img src="screenshots/ico-maker-vi.png" alt="Image Studio: Tạo ICO" width="900" />
 </div>
 
 ## 📥 Tải về
@@ -63,6 +64,26 @@ Muốn tự kiểm tra?
 - Hãy chỉ tải Image Studio từ trang GitHub này. Bản ở trang khác có thể đã bị sửa.
 
 ## 📖 Hướng dẫn sử dụng
+
+### Chuyển đổi định dạng ảnh
+
+1. Mở mục **Chuyển đổi** rồi kéo-thả tệp hoặc thư mục vào cửa sổ, hoặc bấm **Thêm tệp** / **Thêm thư mục**.
+2. Chọn định dạng ở ô **Chuyển sang**.
+3. Chọn cách lưu kết quả:
+   - **Vào thư mục con** (mặc định): thư mục `converted-images` nằm cạnh tệp gốc. Tệp gốc giữ nguyên.
+   - **Thay tệp gốc**: kết quả lưu cạnh tệp gốc, và mỗi tệp gốc bị xóa khi bản mới của nó đã ghi xong.
+4. Bấm **Chuyển đổi**. Bấm **Dừng** lúc nào cũng được; tệp đang làm dở sẽ được dọn đi, không để lại tệp hỏng. Xong thì bấm **Mở thư mục** để xem kết quả.
+
+Trong **Nâng cao**:
+
+- **Chất lượng**: *Không mất* giữ nguyên từng pixel khi định dạng cho phép (PNG, TIFF, WEBP, AVIF, JXL), tệp lớn hơn. *Cao nhất* dùng mức chất lượng cao nhất với nén thường, tệp nhỏ hơn. JPEG luôn ở chất lượng tốt nhất.
+- **PDF**: độ phân giải cho trang PDF: 72, 150, 300 hoặc 600 DPI. 300 DPI hợp với hầu hết tài liệu.
+- **Thư mục con**: tên thư mục chứa kết quả.
+- **Lọc thư mục**: khi thêm thư mục, chỉ lấy tệp của một định dạng (ví dụ chỉ ảnh HEIC). Tệp thêm từng cái thì luôn được lấy.
+
+#### Tệp PDF
+
+Để đọc PDF, ImageMagick cần **Ghostscript**, một chương trình miễn phí nhưng không được kèm vào app vì lý do giấy phép. Nếu máy chưa có, Image Studio sẽ báo và đưa link tới [trang tải Ghostscript](https://ghostscript.com/releases/gsdnld.html). Cài bản 64-bit rồi thử lại. Mỗi trang thành một ảnh; ở chế độ *Thay tệp gốc*, các trang nằm trong thư mục mang tên tệp PDF.
 
 ### Tạo icon trong ba bước
 
@@ -103,27 +124,10 @@ Bấm **Nâng cao** để mở bảng bên phải:
 - **Kích thước**: bộ size có sẵn (*Đầy đủ*, *Windows*, *Favicon*). Bấm vào size để bật hoặc tắt, hoặc gõ size riêng.
 - **Kèm thư mục PNG từng size**: lưu thêm một thư mục ảnh PNG cạnh tệp .ico.
 
-### Chuyển đổi định dạng ảnh
-
-1. Mở mục **Chuyển đổi** rồi kéo-thả tệp hoặc thư mục vào cửa sổ, hoặc bấm **Thêm tệp** / **Thêm thư mục**.
-2. Chọn định dạng ở ô **Chuyển sang**.
-3. Chọn cách lưu kết quả:
-   - **Vào thư mục con** (mặc định): thư mục `converted-images` nằm cạnh tệp gốc. Tệp gốc giữ nguyên.
-   - **Thay tệp gốc**: kết quả lưu cạnh tệp gốc, và mỗi tệp gốc bị xóa khi bản mới của nó đã ghi xong.
-4. Bấm **Chuyển đổi**. Bấm **Dừng** lúc nào cũng được; tệp đang làm dở sẽ được dọn đi, không để lại tệp hỏng. Xong thì bấm **Mở thư mục** để xem kết quả.
-
-Trong **Nâng cao**:
-
-- **Chất lượng**: *Không mất* giữ nguyên từng pixel khi định dạng cho phép (PNG, TIFF, WEBP, AVIF, JXL), tệp lớn hơn. *Cao nhất* dùng mức chất lượng cao nhất với nén thường, tệp nhỏ hơn. JPEG luôn ở chất lượng tốt nhất.
-- **PDF**: độ phân giải cho trang PDF: 72, 150, 300 hoặc 600 DPI. 300 DPI hợp với hầu hết tài liệu.
-- **Thư mục con**: tên thư mục chứa kết quả.
-- **Lọc thư mục**: khi thêm thư mục, chỉ lấy tệp của một định dạng (ví dụ chỉ ảnh HEIC). Tệp thêm từng cái thì luôn được lấy.
-
-#### Tệp PDF
-
-Để đọc PDF, ImageMagick cần **Ghostscript**, một chương trình miễn phí nhưng không được kèm vào app vì lý do giấy phép. Nếu máy chưa có, Image Studio sẽ báo và đưa link tới [trang tải Ghostscript](https://ghostscript.com/releases/gsdnld.html). Cài bản 64-bit rồi thử lại. Mỗi trang thành một ảnh; ở chế độ *Thay tệp gốc*, các trang nằm trong thư mục mang tên tệp PDF.
-
 ## Câu hỏi thường gặp
+
+**Đổi ảnh iPhone (HEIC) sang JPG được không?**
+Được. Kéo ảnh hoặc cả thư mục ảnh vào mục **Chuyển đổi**, chọn **JPEG** ở ô **Chuyển sang** rồi bấm **Chuyển đổi**.
 
 **App có cần mạng không?**
 Không. Mọi thứ chạy trên máy bạn. Tính năng duy nhất dùng mạng là **Kiểm tra cập nhật**, và chỉ chạy khi bạn bấm.

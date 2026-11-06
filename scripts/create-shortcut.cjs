@@ -74,7 +74,7 @@ $desktop = [Environment]::GetFolderPath('Desktop')
 if (-not $desktop) { $desktop = Join-Path $env:USERPROFILE 'Desktop' }
 if (-not (Test-Path -LiteralPath $desktop)) { New-Item -ItemType Directory -Force -Path $desktop | Out-Null }
 $shortcutPath = Join-Path $desktop 'Image Studio.lnk'
-[DesktopShortcut]::Create($shortcutPath, ${psQuote(exePath)}, 'Image Studio: ICO maker and image converter')
+[DesktopShortcut]::Create($shortcutPath, ${psQuote(exePath)}, 'Image Studio: image converter and ICO maker')
 if (-not (Test-Path -LiteralPath $shortcutPath)) { throw "Shortcut was not written: $shortcutPath" }
 Write-Output $shortcutPath
 `;
