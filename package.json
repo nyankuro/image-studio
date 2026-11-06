@@ -1,0 +1,112 @@
+{
+  "name": "image-studio",
+  "productName": "Image Studio",
+  "version": "1.0.0",
+  "description": "Make crisp multi-size Windows icons (.ico) from any picture, and batch-convert images and PDFs between formats.",
+  "main": "electron/main.cjs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && electron .\"",
+    "build": "vite build",
+    "start": "electron .",
+    "test": "npm run build && npm run test:unit && node tests/smoke.cjs && node tests/icon-smoke.cjs",
+    "test:unit": "node --test tests/icon-lib.test.mjs tests/app-lib.test.cjs tests/conversion-queue.cjs tests/conversion.cjs tests/pdf-rendering.cjs",
+    "fetch:magick": "node scripts/fetch-imagemagick.cjs",
+    "package": "npm run fetch:magick && npm run build && electron-builder --win dir --x64 && node scripts/create-shortcut.cjs",
+    "dist": "npm run fetch:magick && npm run build && electron-builder --win nsis zip --x64"
+  },
+  "keywords": [
+    "ico",
+    "icon",
+    "favicon",
+    "image-converter",
+    "pdf-to-png",
+    "imagemagick",
+    "electron",
+    "windows"
+  ],
+  "author": "nyankuro",
+  "license": "GPL-3.0-or-later",
+  "homepage": "https://github.com/nyankuro/image-studio",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nyankuro/image-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nyankuro/image-studio/issues"
+  },
+  "devDependencies": {
+    "7zip-bin": "^5.2.0",
+    "@vitejs/plugin-react": "^5.1.1",
+    "concurrently": "^9.2.1",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.15.3",
+    "lucide-react": "^0.562.0",
+    "pica": "^10.0.3",
+    "playwright-core": "^1.61.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "vite": "^7.3.0",
+    "wait-on": "^9.0.3"
+  },
+  "build": {
+    "appId": "io.github.nyankuro.imagestudio",
+    "productName": "Image Studio",
+    "copyright": "Copyright © 2026 nyankuro",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "locales/**/*",
+      "shared/**/*",
+      "build/icon.ico",
+      "build/icon.png",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "vendor/imagemagick",
+        "to": "imagemagick"
+      },
+      {
+        "from": "LICENSE",
+        "to": "LICENSE.txt"
+      },
+      {
+        "from": "THIRD_PARTY_NOTICES.md",
+        "to": "THIRD_PARTY_NOTICES.md"
+      }
+    ],
+    "electronLanguages": [
+      "en-US",
+      "vi"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "artifactName": "ImageStudio-Portable-${version}-win-x64.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Image Studio",
+      "include": "build/installer.nsh",
+      "artifactName": "ImageStudio-Setup-${version}.${ext}"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "nyankuro",
+      "repo": "image-studio",
+      "releaseType": "release"
+    }
+  }
+}

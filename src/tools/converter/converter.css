@@ -1,0 +1,145 @@
+.converter-tool {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.converter-tool.drag-over .converter-stage {
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.converter-stage {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding: 16px;
+}
+
+/* Hàng chính: chuyển sang · cách lưu · nút chuyển. */
+.converter-bar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.converter-target {
+  align-items: center;
+  display: flex;
+  flex: 1 1 210px;
+  gap: 8px;
+  min-width: 190px;
+}
+
+.converter-target > span {
+  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.converter-target select {
+  font-size: 13.5px;
+  min-height: 40px;
+  min-width: 0;
+}
+
+.converter-bar .seg {
+  flex: 0 0 auto;
+}
+
+.converter-bar .seg button {
+  min-height: 34px;
+  padding: 0 12px;
+}
+
+.seg button.on.danger {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+.converter-go {
+  min-height: 40px;
+  min-width: 150px;
+}
+
+.converter-go small {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  opacity: 0.8;
+}
+
+.converter-note {
+  align-items: center;
+  border: 1px solid;
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 13px;
+  gap: 8px;
+  line-height: 1.4;
+  padding: 8px 10px;
+}
+
+.converter-note.warning {
+  background: var(--warning-bg);
+  border-color: var(--warning-border);
+  color: var(--warning-text);
+}
+
+/* Danh sách tệp: chỉ bảng cuộn, phần còn lại đứng yên. */
+.converter-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.converter-list-head {
+  align-items: center;
+  color: var(--text-3);
+  display: flex;
+  font-size: 12.5px;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.converter-list .table-wrap {
+  flex: 1;
+  min-height: 110px;
+}
+
+.converter-list table {
+  table-layout: fixed;
+}
+
+.converter-list th:nth-child(2),
+.converter-list td:nth-child(2) {
+  width: 84px;
+}
+
+.converter-list th:nth-child(3),
+.converter-list td:nth-child(3) {
+  width: 92px;
+}
+
+.converter-list th:nth-child(4),
+.converter-list td:nth-child(4) {
+  width: 136px;
+}
+
+.converter-stage > .icon-message {
+  flex-shrink: 0;
+}
+
+/* Nhãn bên Nâng cao của trang này dài hơn bên Tạo ICO. */
+.converter-tool .adv-row {
+  grid-template-columns: 84px minmax(0, 1fr);
+}

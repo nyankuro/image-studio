@@ -1,0 +1,37 @@
+name: release
+
+# Chạy test ở mỗi lần push. Push một tag như v1.0.1 thì dựng thêm bộ cài và bản
+# portable rồi đính vào GitHub Release.
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Download the bundled ImageMagick
+        run: npm run fetch:magick
+      - name: Put the bundled ImageMagick on PATH for the tests
+        shell: pwsh
+        run: Add-Content -Path $env:GITHUB_PATH -Value "$env:GITHUB_WORKSPACE\vendor\imagemagick"
+      - name: Install Ghostscript for the PDF tests
+        run: choco install ghostscript --no-progress -y
+      - run: npm run build
+      - run: npm run test:unit
+      - name: Build installer and portable zip
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: npx electron-builder --win nsis zip --x64 --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
